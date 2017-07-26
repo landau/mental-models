@@ -5,6 +5,7 @@
   "description": "Mental models are useful to try to make sense of things and to help generate ideas. Based on your thought, find a mental model.",
   "main": "index.js",
   "scripts": {
+    "pretest": "eslint -c .eslintrc . --ext .js",
     "test": "mocha -R spec --recursive ./test"
   },
   "repository": {
@@ -21,7 +22,8 @@
     "node": ">=6.0.0"
   },
   "devDependencies": {
-    "cheerio": "1.0.0-rc.2"
+    "cheerio": "1.0.0-rc.2",
+    "eslint": "4.3.0"
   },
   "dependencies": {
     "elasticsearch": "13.2.0",

@@ -28,14 +28,14 @@ const bulk = $('h4').map((i, el) => {
 
   return items.map((body, j) => ({ group, body }));
 })
-.get()
-.map((model, i) => Object.assign({ id: i + 1 }, model))
-.reduce((acc, model) => {
-  return acc.concat(
-    {index:{ _index: INDEX, _type: 'model', _id: model.id}},
-    model
-  );
-}, []);
+  .get()
+  .map((model, i) => Object.assign({ id: i + 1 }, model))
+  .reduce((acc, model) => {
+    return acc.concat(
+      {index: { _index: INDEX, _type: 'model', _id: model.id}},
+      model
+    );
+  }, []);
 
 const client = new Client({ host: 'localhost:9200' });
 
