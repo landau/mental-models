@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/landau/mental-models#readme",
   "engines": {
-    "node" : ">=6.0.0"
+    "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "cheerio": "1.0.0-rc.2"
   }
 }
