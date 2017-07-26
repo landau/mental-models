@@ -24,6 +24,11 @@
     "cheerio": "1.0.0-rc.2"
   },
   "dependencies": {
-    "elasticsearch": "13.2.0"
+    "elasticsearch": "13.2.0",
+    "handlebars": "4.0.10",
+    "hapi": "16.5.0",
+    "inert": "4.2.1",
+    "joi": "10.6.0",
+    "vision": "4.1.1"
   }
 }
