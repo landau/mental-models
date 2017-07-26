@@ -1,0 +1,23 @@
+{
+  "name": "mental-models",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Mental models are useful to try to make sense of things and to help generate ideas. Based on your thought, find a mental model.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec --recursive ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/landau/mental-models.git"
+  },
+  "author": "Trevor Landau",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/landau/mental-models/issues"
+  },
+  "homepage": "https://github.com/landau/mental-models#readme",
+  "engines": {
+    "node" : ">=6.0.0"
+  }
+}
