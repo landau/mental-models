@@ -26,12 +26,12 @@
 
   <div class="page-header">
     <div class="container">
-      <form>
+      <form action="/" method="get">
         <div class="form-group">
           <div class="col-10 offset-1 input-group">
-            <input class="form-control form-control-lg" type="search" placeholder="What's on your mind?" id="query">
+            <input class="form-control form-control-lg" type="search" placeholder="What's on your mind?" value="{{query}}" id="query" name="query">
             <span class="input-group-btn">
-              <button class="btn btn-primary" type="button">Go!</button>
+              <button class="btn btn-primary" type="submit">Go!</button>
             </span>
           </div>
         </div>
@@ -54,9 +54,39 @@
 
       <div class="col-sm-8 page-main offset-sm-1">
 
-        <div class="page-post">
+          {{#if results}}
+          {{#each results as |result|}}
+          <div class="page-post row">
+            <div class="col">
+              <div class="card">
+                <div class="card-header">
+                  <!-- <span class="badge badge-primary"></span> -->
+                  {{result._source.group}}
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">{{result._source.name}}</h4>
+                  <p class="card-text">{{result._source.body}}</p>
+                  {{#if result._source.related}}
+                  <hr/>
+                  <h6>Related:</h6>
+                  <ul>
+                  {{#each result._source.related as |item|}}
+                  <li class="card-text small">{{item}}</li>
+                  {{/each}}
+                  </ul>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+          {{else}}
+          <div class="page-post row">
+            <p>No Results Found for: <strong>{{query}}</strong></p>
+          </div>
+          {{/if}}
 
-          some things
+
         <!-- <nav class="page-pagination">
           <a class="btn btn-outline-primary" href="#">Older</a>
           <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
@@ -70,10 +100,6 @@
   </div><!-- /.container -->
 
   <footer class="page-footer">
-    <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-    <p>
-      <a href="#">Back to top</a>
-    </p>
   </footer>
 
 

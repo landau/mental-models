@@ -1,0 +1,54 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "porter": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+          ]
+        }
+      },
+      "filter": {
+      }
+    }
+  },
+  "mappings": {
+    "model": {
+      "properties": {
+        "id": {
+          "type": "text",
+          "analyzer": "keyword"
+        },
+        "frequency": {
+          "type": "short"
+        },
+        "name": {
+          "type": "text",
+          "analyzer": "english"
+        },
+        "group": {
+          "type": "text",
+          "analyzer": "english",
+          "fields": {
+            "raw": {
+              "fielddata": true,
+              "type": "text",
+              "analyzer": "keyword"
+            }
+          }
+        },
+        "body": {
+          "type": "text",
+          "analyzer": "english"
+        },
+        "related": {
+          "type": "text",
+          "analyzer": "english"
+        }
+      }
+    }
+  }
+}

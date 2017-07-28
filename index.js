@@ -9,11 +9,14 @@ const config = {
   env: env.NODE_ENV || 'development',
   host: env.NODE_HOST || 'localhost',
   port: toInt(env.NODE_PORT) || 8080,
-  elasticSearch: {
+  log: {
+    level: env.NODE_LOG_LEVEL || 'info'
+  },
+  elasticsearch: {
     host: env.NODE_ELASTICSEARCH_HOST || 'localhost',
     port: toInt(env.NODE_ELASTICSEARCH_PORT) || 9200,
     log: env.NODE_ELASTICSEARCH_LOG || env.NODE_LOG_LEVEL || 'info',
-    index: env.NODE_ELASTICSEARCH_INDEX || 'quotes'
+    index: env.NODE_ELASTICSEARCH_INDEX || 'models'
   }
 };
 

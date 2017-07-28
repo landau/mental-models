@@ -16,6 +16,10 @@ const file = fs.readFileSync(path.join(__dirname, FILE_NAME), 'utf8');
 
 const $ = cheerio.load(file);
 
+function capitalize(s) {
+  return s[0].toUpperCase() + s.slice(1);
+}
+
 const bulk = $('h4').map((i, el) => {
   const $heading = $(el);
   const group = $heading.text();
@@ -26,7 +30,40 @@ const bulk = $('h4').map((i, el) => {
     .map((i, el) => $(el).text())
     .get();
 
-  return items.map((body, j) => ({ group, body }));
+  return items.map(item => {
+
+    const [main, related] = item.split('(related:');
+
+    let frequency;
+    let name;
+    let body;
+
+    try {
+      const [part1, part2] = main.split('—');
+      frequency = parseInt(part1.match(/\((\d)\)/)[1], 10);
+      name = part1.slice(3).trim();
+      body = capitalize(part2.trim().slice(1, -1));
+    } catch (e) {
+      console.log('Failed to parse item.');
+      console.log(group, main);
+      throw e;
+    }
+
+    const doc = { group, frequency, name, body };
+
+    if (related) {
+      doc.related = related
+        .trim()
+        .replace(/\)\.?$/, '')
+        .split(';')
+        .map(s => {
+          return capitalize(s.trim())
+            .replace(/“|”/g, '');
+        });
+    }
+
+    return doc;
+  });
 })
   .get()
   .map((model, i) => Object.assign({ id: i + 1 }, model))

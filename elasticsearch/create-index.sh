@@ -9,4 +9,4 @@ ES_ENDPOINT=$1
 INDEX=$2
 
 printf "Creating index ${INDEX}\n"
-curl -XPUT -d @mappings.json "${ES_ENDPOINT}/${INDEX}"
+curl -XPUT -d @settings.json "${ES_ENDPOINT}/${INDEX}"
