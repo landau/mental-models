@@ -26,9 +26,11 @@
     "eslint": "4.3.0"
   },
   "dependencies": {
+    "bunyan": "1.8.10",
     "elasticsearch": "13.2.0",
     "handlebars": "4.0.10",
     "hapi": "16.5.0",
+    "hapi-bunyan": "0.7.0",
     "inert": "4.2.1",
     "joi": "10.6.0",
     "vision": "4.1.1"

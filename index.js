@@ -12,6 +12,7 @@ const config = {
     port: toInt(env.NODE_SERVER_PORT) || 8080
   },
   log: {
+    name: env.NODE_LOG_NAME || 'mental-models',
     level: env.NODE_LOG_LEVEL || 'info'
   },
   elasticsearch: {

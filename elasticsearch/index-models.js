@@ -42,7 +42,7 @@ const bulk = $('h4').map((i, el) => {
       const [part1, part2] = main.split('—');
       frequency = parseInt(part1.match(/\((\d)\)/)[1], 10);
       name = part1.slice(3).trim();
-      body = capitalize(part2.trim().slice(1, -1));
+      body = capitalize(part2.trim().replace(/“|”/g, ''));
     } catch (e) {
       console.log('Failed to parse item.');
       console.log(group, main);
