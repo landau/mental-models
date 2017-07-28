@@ -1,14 +1,16 @@
 'use strict';
 
-const Server = require('./lib');
+const App = require('./lib');
 
 const toInt = n => parseInt(n, 10);
 const {env} = process;
 
 const config = {
   env: env.NODE_ENV || 'development',
-  host: env.NODE_HOST || 'localhost',
-  port: toInt(env.NODE_PORT) || 8080,
+  server: {
+    host: env.NODE_SERVER_HOST || 'localhost',
+    port: toInt(env.NODE_SERVER_PORT) || 8080
+  },
   log: {
     level: env.NODE_LOG_LEVEL || 'info'
   },
@@ -20,11 +22,11 @@ const config = {
   }
 };
 
-const server = new Server(config);
+const app = new App(config);
 
-server.start()
+app.start()
   .then(() => {
-    console.log('Server started');
+    console.log('Application started.');
   })
   .catch(err => {
     setImmediate(() => {
